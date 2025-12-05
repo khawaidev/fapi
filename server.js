@@ -1,13 +1,21 @@
 // server.js — Render-Optimized Ether0 Proxy
 // Last Updated: Dec 2025 (Ultra-Low-RAM Chromium Mode)
 
+
 import cors from "cors";
 import express from "express";
 import { chromium } from "playwright-core";
 
 const app = express();
-app.use(cors());
+
+app.use(cors({
+  origin: "*",
+  methods: ["GET", "POST"],
+  allowedHeaders: ["Content-Type"],
+}));
+
 app.use(express.json());
+
 
 const PORT = process.env.PORT || 3001;
 const URL = "https://ether0.platform.futurehouse.org/";
